@@ -76,8 +76,8 @@ sub daemon_detach {
     $self->_get_options( %options );
     # now we are in the daemon ...
 
-    (POSIX::setsid)  # set session id
-        || confess "Cannot detach from controlling process";
+    POSIX::setsid == -1  # set session id
+        and confess "Cannot detach from controlling process";
 
     unless ( $self->no_double_fork ) {
         $SIG{'HUP'} = 'IGNORE';
