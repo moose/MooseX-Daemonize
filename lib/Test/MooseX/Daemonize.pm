@@ -35,7 +35,6 @@ sub check_test_output {
       or die "can't open test output: $!";
     while ( my $line = <$stdout_in> ) {
         $line =~ s/\s+\z//;
-        my $label;
         if ( $line =~ /\A(?:(not\s+)?ok)(?:\s+-)(?:\s+(.*))\z/ ) {
             my ( $not, $text ) = ( $1, $2, $3 );
             $text ||= '';
@@ -51,7 +50,7 @@ sub check_test_output {
             $Test->diag($line);
         }
         else {
-            $Test->diag("$label: $line (unrecognised)\n");
+            $Test->diag("$line (unrecognised)\n");
         }
     }
 }
