@@ -3,7 +3,7 @@ use warnings;
 package MooseX::Daemonize::Pid;
 # ABSTRACT: PID management for MooseX::Daemonize
 
-our $VERSION = '0.22';
+our $VERSION = '0.23';
 
 use Moose;
 use Moose::Util::TypeConstraints qw(coerce from via);
